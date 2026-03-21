@@ -1,0 +1,15 @@
+.payment_module.agyapay {
+	background: #fbfbfb;
+}
+
+.payment_module.agyapay img{
+	float: left;
+    position: relative;
+    right: 82px;
+    bottom: 9px;
+}
+
+.payment_module.agyapay span{
+	position: relative;
+	right: 64px;
+}

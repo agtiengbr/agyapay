@@ -1,0 +1,21 @@
+ 
+
+{shop_url}
+
+Olá {customer_name}
+
+Você pode pagar o seu pedido realizando a leitura do QRCode abaixo no aplicativo do seu banco, ou copiando o código clicando no botão abaixo e utilizando a opção de PIX Copia e Cola do seu banco.
+
+O PIX poderá ser pago até {pix_expiration_date}, e a aprovação leva até 12h para ser feita em nossa loja.
+
+O valor do seu PIX é: {value_invoiced}
+
+O QRCODE do PIX é: {pix_qrcode_url}
+
+Copie o seguinte código para efetuar o pagamento:
+
+{pix_qrcode_hash}
+
+[{shop_name}]({shop_url})
+
+Powered by [PrestaShop](https://www.prestashop.com/?utm_source=marchandprestashop&utm_medium=e-mail&utm_campaign=footer_1-7)

@@ -1,0 +1,75 @@
+#agyapay_credit_card .box .row.person_type {
+	margin-bottom: 20px;
+}
+
+#agyapay_credit_card label {
+	margin-bottom: 0; 
+	color: #888;
+}
+
+#agyapay_credit_card select.is-not-selected {
+	color: #777;
+}
+
+#agyapay_credit_card .box > .row {
+	margin-bottom: 10px;
+}
+
+
+[name=agyapay_year] {
+	padding-left: 7px;
+}
+
+#agyapay_cardbanner {
+	position: absolute;
+	right: 20px;
+	bottom: 0;
+}
+
+#agyapay_credit_card .has-error {
+	color: red;
+}
+
+#agyapay_credit_card .has-error input,
+#agyapay_credit_card .has-error select{
+	border: 1px solid red;
+}
+
+#agyapay_credit_card .d-initial {
+    display: initial;
+}
+
+
+/* PS 16 */
+#module-agyapay-creditCard #agyapay_credit_card select {
+	height: 28px;
+}
+
+
+/* pedido já existente */
+
+#agyapay_existent_order  .box {
+	text-align: center;
+}
+
+#agyapay_existent_order div.buttons button a {
+	color: black;
+}
+
+@media(min-width: 768px) {
+	#agyapay_existent_order #cardnumber,
+	#agyapay_existent_order #cardholder,
+	#agyapay_existent_order #month {
+		margin-left: 15%;
+	}
+}
+
+@media(max-width: 767px) {
+	#agyapay_existent_order input, #agyapay_existent_order is-not-selected {
+		margin-bottom: 6px;
+	}
+
+	#agyapay_credit_card .box div {
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,4 @@
+logs/*.log
+logs/*.txt
+files/boletos/*.pdf
+vendor

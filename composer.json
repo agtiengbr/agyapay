@@ -1,0 +1,9 @@
+{
+    "name": "agti/agyapay",
+    "autoload": {
+        "psr-4": {
+            "AGTI\\Yapay\\": "src/"
+        }
+    },
+    "require": {}
+}

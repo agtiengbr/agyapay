@@ -1,0 +1,27 @@
+.cart-summary-subtotals-container {
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+}
+
+.content {
+    padding: 0 2.313rem;
+    padding-top: 1rem;
+}
+
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.media-position-relative {
+    position: relative;
+    vertical-align: bottom;
+}
+
+.media-position-relative div:first-child {
+    position: absolute;
+    top: 0;
+}
