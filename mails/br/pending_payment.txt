@@ -1,0 +1,11 @@
+ 
+
+{shop_url}
+
+Olá
+
+O pedido {reference_product} está ha mais de 4 dias com o pagamento pendente.
+
+[{shop_name}]({shop_url})
+
+Powered by [PrestaShop](https://www.prestashop.com/?utm_source=marchandprestashop&utm_medium=e-mail&utm_campaign=footer_1-7)

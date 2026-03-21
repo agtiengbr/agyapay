@@ -1,0 +1,7 @@
+services:
+  _defaults:
+    public: true
+
+  agti.yapay.infrastructure.serializer.serializer:
+    class: Symfony\Component\Serializer\Serializer 
+    factory: ['AGTI\Yapay\Infrastructure\Serializer\Serializer', 'buildSerializer']
