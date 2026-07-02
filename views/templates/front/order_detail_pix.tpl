@@ -6,7 +6,7 @@
             do QRCode abaixo ou copiando o código clicando no botão a 
             seguir e utilizando a opção de PIX Copia e Cola.
             <br><br>
-            O PIX poderá ser pago até <b>{Tools::displayDate($transaction->pix_expiration_date, null, true)}</b>, e a aprovação leva até 12h para ser feita em nossa loja.
+            O PIX poderá ser pago até <b>{Tools::displayDate($transaction->pix_expiration_date, true)}</b>, e a aprovação leva até 12h para ser feita em nossa loja.
             <br><br><br>
             <iframe id="pix-qrcode" src="{$transaction->pix_qrcode_url}" data-pix-data="{$transaction->pix_qrcode_hash}"></iframe>
             <br>

@@ -46,7 +46,7 @@
             <p>Você pode pagar o seu pedido realizando a leitura do QRCode abaixo no aplicativo do seu banco, ou copiando o código clicando no botão abaixo e utilizando a opção de PIX Copia e Cola do seu banco.
             </p>
 
-            <p>O PIX poderá ser pago até <strong>{Tools::displayDate($transaction->pix_expiration_date, null, true)}</strong>, e a aprovação leva poucos minutos para ser feita em nossa loja.</p>
+            <p>O PIX poderá ser pago até <strong>{Tools::displayDate($transaction->pix_expiration_date, true)}</strong>, e a aprovação leva poucos minutos para ser feita em nossa loja.</p>
         </div>
 
         <div>
