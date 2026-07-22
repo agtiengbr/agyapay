@@ -2,7 +2,7 @@
 <module>
     <name>agyapay</name>
     <displayName><![CDATA[Vindi Transparente]]></displayName>
-    <version><![CDATA[2.6.38]]></version>
+    <version><![CDATA[2.7.0]]></version>
     <description><![CDATA[Integra a sua loja PrestaShop com o intermediador de pagamentos da Vindi.]]></description>
     <author><![CDATA[AGTI]]></author>
     <tab><![CDATA[payments_gateways]]></tab>
