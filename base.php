@@ -1463,7 +1463,8 @@ class BaseAgYapay extends AgPaymentModule
         $mapping_number = $this->getAddressNumberMapping();
         $address_number = 's/n';
         if ($mapping_number->isMappingEnabled()) {
-            $address_number = $address_invoice?->{$mapping_number->getMappedField()};
+            $mappedField = $mapping_number->getMappedField();
+            $address_number = $address_invoice->{$mappedField};
         }
 
         $errors = [];
@@ -1867,7 +1868,8 @@ class BaseAgYapay extends AgPaymentModule
             $mapping_number = $this->getAddressNumberMapping();
             $address_number = 's/n';
             if ($mapping_number->isMappingEnabled()) {
-                $address_number = $address?->{$mapping_number->getMappedField()};
+                $mappedField = $mapping_number->getMappedField();
+                $address_number = $address->{$mappedField};
             }
 
             $state = new State($address->id_state);
@@ -2486,7 +2488,8 @@ class BaseAgYapay extends AgPaymentModule
         $mapping_number = $this->getAddressNumberMapping();
         $address_number = 's/n';
         if ($mapping_number->isMappingEnabled()) {
-            $address_number = $address?->{$mapping_number->getMappedField()};
+            $mappedField = $mapping_number->getMappedField();
+            $address_number = $address->{$mappedField};
         }
 
         $state = new State($address->id_state);
@@ -2598,7 +2601,8 @@ class BaseAgYapay extends AgPaymentModule
         $mapping_number = $this->getAddressNumberMapping();
         $address_number = 's/n';
         if ($mapping_number->isMappingEnabled()) {
-            $address_number = $address?->{$mapping_number->getMappedField()};
+            $mappedField = $mapping_number->getMappedField();
+            $address_number = $address->{$mappedField};
         }
 
         $state = new State($address->id_state);
