@@ -6,6 +6,14 @@ class AgYapayReturnModuleFrontController extends ModuleFrontController
     {
         parent::__construct();
 
+        $this->display_header = false;
+        $this->display_footer = false;
+    }
+
+    public function postProcess()
+    {
+        // O contêiner do front office só está disponível após Controller::init().
+
         AgClienteLogger::createLogger(_PS_MODULE_DIR_ . 'agyapay/logs/return.txt', 1);
         AgClienteLogger::addLog('agyapay - webhook recebido.', 1, null, null, null, true);
 
