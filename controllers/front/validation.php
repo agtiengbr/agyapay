@@ -311,11 +311,7 @@ class AgYapayValidationModuleFrontController extends ModuleFrontController
             $order_status = $this->module->getStatus($transaction->status_id, new Order());
             $this->module->validateOrder($cart->id, $order_status, $cart->getOrderTotal(), $payment_mode, NULL, NULL, (int)$this->context->currency->id, false, $this->context->cart->secure_key);
 
-            if (version_compare(_PS_VERSION_, '9', '<')) {
-                $ps_order = new Order(Order::getOrderByCartId($cart->id));
-            } else {
-                $ps_order = new Order(Order::getByCartId($cart->id));
-            }
+            $ps_order = new Order((int) $this->module->currentOrder);
             Db::getInstance()->update('agyapay_transaction', ['deprecated' => 1], 'id_order=' . (int) $this->module->currentOrder);
 
             $obj->id_agyapay_transaction = $obj->id;

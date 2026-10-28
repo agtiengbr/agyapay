@@ -2,7 +2,7 @@
 
 Olá {customer_name}, 
 
-Seu pedido com referência {customer_name} está aguardando o pagamento via Boleto Bancário.
+Seu pedido com referência {order_name} está aguardando o pagamento via Boleto Bancário.
 
 Para imprimir o boleto, acesse o link abaixo:
 

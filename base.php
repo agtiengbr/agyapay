@@ -33,6 +33,11 @@ class BaseAgYapay extends AgPaymentModule
     private const VINDI_CARRIER_MODE_VIRTUAL = 2;
     private const VINDI_CARRIER_MODE_PRESET = 3;
 
+    public $cpf_mapping;
+    public $cnpj_mapping;
+    public $social_name_mapping;
+    public $address_number_mapping;
+
     protected $hooks = [
         'displayHeader',
         'displayBackOfficeHeader',
@@ -131,7 +136,7 @@ class BaseAgYapay extends AgPaymentModule
     {
         $this->name     = 'agyapay';
         $this->tab      = 'payments_gateways';
-        $this->version  = '2.7.4';
+        $this->version  = '2.7.5';
         $this->author   = 'AGTI';
 
         $this->bootstrap = true;
@@ -2142,6 +2147,51 @@ class BaseAgYapay extends AgPaymentModule
         return $r;
     }
 
+    public function sendPendingPaymentReminder(Order $order)
+    {
+        // Mail::Send also returns true when sending is disabled.
+        if ((int) Configuration::get('PS_MAIL_METHOD', null, null, $order->id_shop) === 3) {
+            return false;
+        }
+
+        $emails = preg_split('/\r\n|\n|\r/', (string) Configuration::get('AGYAPAY_PAY_EMAIL_ADMINS'));
+        $emails = array_unique(array_filter(array_map('trim', $emails), ['Validate', 'isEmail']));
+        if (!$emails) {
+            return false;
+        }
+
+        $mail_data = [
+            '{shop_name}' => $this->context->shop->name,
+            '{reference_product}' => $order->reference,
+        ];
+
+        foreach ($emails as $email) {
+            $sent = Mail::Send(
+                $order->id_lang,
+                'pending_payment',
+                'Pagamento pendente há mais de 4 dias',
+                $mail_data,
+                $email,
+                null,
+                null,
+                null,
+                null,
+                null,
+                _PS_MODULE_DIR_ . $this->name . '/mails/',
+                false,
+                $order->id_shop
+            );
+            if (!$sent) {
+                return false;
+            }
+        }
+
+        $orderEmail = new AgYapayOrderEmails();
+        $orderEmail->id_order = $order->id;
+
+        return (bool) $orderEmail->save();
+    }
+
 
     public static function getTicketLinkForOrder(Order $order, $include_paid_order=false, $allow_expired_tickets=false)
     {
@@ -2497,7 +2547,7 @@ class BaseAgYapay extends AgPaymentModule
         $shippingType = $this->getVindiShippingTypeFromCarrierId($vindiCarrierId);
         $discount = $cart->getOrderTotal(true, Cart::ONLY_DISCOUNTS);
 
-        $account = new AgYaPaySellerAccount($token);
+        $account = GlobalAgYaPaySellerAccountCarrier::getAccountByCarrier($vindiCarrierId);
         $notification_url = $account->notification_url ?: $this->context->link->getModuleLink('agyapay', 'return');
 
         $shippingPrice = $vindiCarrierId === -1
@@ -2611,7 +2661,7 @@ class BaseAgYapay extends AgPaymentModule
 
         $discount = $order->total_discounts_tax_incl;
 
-        $account = new AgYaPaySellerAccount($token);
+        $account = GlobalAgYaPaySellerAccountCarrier::getAccountByCarrier($vindiCarrierId);
         $notification_url = $account->notification_url ?: $this->context->link->getModuleLink('agyapay', 'return');
 
         $yapay_data = [

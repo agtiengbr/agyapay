@@ -295,7 +295,9 @@ class AgYapayTransaction extends AgObjectModel
         $module     = new agyapay;
         
         $mail_data = [
-            '{pix_expiration_date}' => Tools::displayDate($this->pix_expiration_date, null, true),
+            '{pix_expiration_date}' => version_compare(_PS_VERSION_, '8.0.0', '<') ?
+                Tools::displayDate($this->pix_expiration_date, null, true) :
+                Tools::displayDate($this->pix_expiration_date, true),
             '{customer_name}' => $customer->firstname." ".$customer->lastname,
             '{firstname}' => $customer->firstname,
             '{pix_qrcode_url}' => $this->pix_qrcode_url,

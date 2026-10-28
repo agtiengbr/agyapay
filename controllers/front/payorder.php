@@ -29,21 +29,21 @@ class agyapaypayorderModuleFrontController extends ModuleFrontController
 
         if (Configuration::get("AGYAPAY_TICKET_ACTIVE")) {
             $ticket_form = $this->module->generateTicketForm(
-                version_compare(_PS_VERSION_, '9', '<') ? Tools::displayPrice($order->total_paid_tax_incl) : (new PriceFormatter)->format($order->total_paid_tax_incl)
+                (float) $order->total_paid_tax_incl
             );
             $this->context->smarty->assign(['ticket_form' => $ticket_form]);
         }
 
         if (Configuration::get("AGYAPAY_CREDIT_CARD_ACTIVE")) {
             $ccForm = $this->module->generateCreditCardForm(
-                version_compare(_PS_VERSION_, '9', '<') ? Tools::displayPrice($order->total_paid_tax_incl) : (new PriceFormatter)->format($order->total_paid_tax_incl)
+                (float) $order->total_paid_tax_incl
             );
             $this->context->smarty->assign(['cc_form' => $ccForm]);
         }
 
         if (Configuration::get("AGYAPAY_PIX_ACTIVE")) {
             $pixForm = $this->module->generatePixForm(
-                version_compare(_PS_VERSION_, '9', '<') ? Tools::displayPrice($order->total_paid_tax_incl) : (new PriceFormatter)->format($order->total_paid_tax_incl)
+                (float) $order->total_paid_tax_incl
             );
             $this->context->smarty->assign(['pix_form' => $pixForm]);
         }

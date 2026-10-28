@@ -1,0 +1,21 @@
+ 
+
+{shop_url}
+
+Hello {customer_name}
+
+Pay your order by scanning the QR code in your banking app or by copying the code below into your bank's PIX copy-and-paste option.
+
+This PIX payment is valid until {pix_expiration_date}. Approval in our store may take up to 12 hours.
+
+Your PIX payment amount is: {value_invoiced}
+
+Your PIX QR code is: {pix_qrcode_url}
+
+Copy this code to pay:
+
+{pix_qrcode_hash}
+
+[{shop_name}]({shop_url})
+
+Powered by [PrestaShop](https://www.prestashop.com/?utm_source=marchandprestashop&utm_medium=e-mail&utm_campaign=footer_1-7)

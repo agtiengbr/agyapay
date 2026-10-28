@@ -1,0 +1,17 @@
+[{shop_url}] 
+
+Hello {customer_name}, 
+
+Order {order_name} is awaiting payment by bank slip.
+
+Open this link to print your bank slip:
+
+{print_ticket_link}
+
+Review your order and download your invoice in the "Order history" [{history_url}] section of your account. Select
+"My account" [{my_account_url}] in our store. 
+
+If you placed a guest order, track it in the "Guest tracking"
+[{guest_tracking_url}?id_order={order_name}] section of our store.
+
+{shop_name} [{shop_url}]
