@@ -26,6 +26,12 @@ Módulo da AGTI que integra o PrestaShop ao intermediador de pagamentos Vindi.
 
 Abra uma issue neste repositório com a versão do módulo, do PrestaShop e os detalhes do erro.
 
+## Correções na versão 2.7.6
+
+- A consulta de boleto valida o identificador e escapa o valor antes de consultar o banco.
+- Requisições com identificador inválido recebem HTTP 400.
+- A atualização preserva os links de boletos existentes com identificadores SHA-1 válidos.
+
 ## Correções na versão 2.7.5
 
 - A finalização usa o ID retornado por `validateOrder()` para carregar o pedido correto.
@@ -45,6 +51,7 @@ Execute na raiz do módulo:
 php tests/regression.php 1.7.8.11
 php tests/regression.php 8.2.8
 php tests/regression.php 9.2.0
+php tests/bankslip-security.php 9.2.1
 ```
 
 Esses testes usam dependências simuladas e as assinaturas das APIs de cada versão; não acessam banco, provedor de pagamentos ou SMTP. O código dos testes e das correções mantém sintaxe compatível com PHP 7.3.

@@ -17,8 +17,9 @@ class AgYapaybankslipModuleFrontController extends ModuleFrontController
 
         $hash_bank_slip = Tools::getValue('hash');
 
-        if (!$hash_bank_slip) {
-            exit();
+        if (!is_string($hash_bank_slip) || !preg_match('/\A[0-9a-f]{40}\z/i', $hash_bank_slip)) {
+            http_response_code(400);
+            return;
         }
 
         $bank_slip_data = AgYapayTransaction::getBankSlipFile($hash_bank_slip);

@@ -120,10 +120,14 @@ class AgYapayTransaction extends AgObjectModel
 
     public static function getBankSlipFile($hash_bank_slip)
     {
+        if (!is_string($hash_bank_slip) || !preg_match('/\A[0-9a-f]{40}\z/i', $hash_bank_slip)) {
+            return new AgYapayTransaction();
+        }
+
         $sql = new DbQuery();
         $sql->select('t.*');
         $sql->from('agyapay_transaction', 't');
-        $sql->where('hash_bank_slip="' . $hash_bank_slip . '"');
+        $sql->where("hash_bank_slip = '" . pSQL($hash_bank_slip) . "'");
 
         $sql->orderBy('id_agyapay_transaction DESC');
 

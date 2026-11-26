@@ -136,7 +136,7 @@ class BaseAgYapay extends AgPaymentModule
     {
         $this->name     = 'agyapay';
         $this->tab      = 'payments_gateways';
-        $this->version  = '2.7.5';
+        $this->version  = '2.7.6';
         $this->author   = 'AGTI';
 
         $this->bootstrap = true;
